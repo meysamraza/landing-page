@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,20 +38,15 @@
   </div>
 
   <h2>Book a 15-minute strategy call with Dr. Obaid</h2>
+
+  <!-- Calendly widget container - ONLY ONE instance -->
   <div
     class="calendly-inline-widget"
     data-url="https://calendly.com/arazameysam/30min"
-    style="position: relative; min-width: 320px; height: 500px"
-  >
-    <iframe
-      src="https://calendly.com/arazameysam/30min?embed_domain=&embed_type=Inline"
-      width="100%"
-      height="100%"
-      frameborder="0"
-      title="Select a Date & Time - Calendly"
-    ></iframe>
-  </div>
+    style="min-width:320px; height:500px; max-width: 400px; margin: 0 auto;"
+  ></div>
 
+  <!-- Calendly widget script -->
   <script
     type="text/javascript"
     src="https://assets.calendly.com/assets/external/widget.js"
@@ -66,7 +61,6 @@
     const fullscreenBtn = document.getElementById("fullscreenBtn");
     const videoContainer = document.querySelector(".video-container");
 
-    // Play/pause toggle
     playPauseBtn.addEventListener("click", () => {
       if (video.paused) {
         video.play();
@@ -77,50 +71,39 @@
       }
     });
 
-    // Mute/unmute toggle
     muteBtn.addEventListener("click", () => {
       video.muted = !video.muted;
-      muteBtn.innerHTML = video.muted ? "&#128263;" : "&#128266;"; // speaker off/on icons
+      muteBtn.innerHTML = video.muted ? "&#128263;" : "&#128266;";
     });
 
-    // Update progress bar as video plays
     video.addEventListener("timeupdate", () => {
-      if (!progressBar.max || progressBar.max === "100") {
-        progressBar.max = video.duration;
-      }
+      progressBar.max = video.duration;
       progressBar.value = video.currentTime;
     });
 
-    // Seek video when progress bar is changed
     progressBar.addEventListener("input", () => {
       video.currentTime = progressBar.value;
     });
 
-    // Reset play button on video end
     video.addEventListener("ended", () => {
       playPauseBtn.innerHTML = "&#9658;";
     });
 
-    // Fullscreen toggle
     fullscreenBtn.addEventListener("click", () => {
       if (!document.fullscreenElement) {
         if (videoContainer.requestFullscreen) {
           videoContainer.requestFullscreen();
         } else if (videoContainer.webkitRequestFullscreen) {
-          /* Safari */
           videoContainer.webkitRequestFullscreen();
         } else if (videoContainer.msRequestFullscreen) {
-          /* IE11 */
           videoContainer.msRequestFullscreen();
         }
       } else {
         if (document.exitFullscreen) {
           document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
-          /* Safari */
           document.webkitExitFullscreen();
         } else if (document.msExitFullscreen) {
-          /* IE11 */
           document.msExitFullscreen();
         }
       }
