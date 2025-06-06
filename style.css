@@ -6,6 +6,7 @@ body {
     font-family: Arial, sans-serif;
     background: #fff;
     color: #222;
+    margin: 0;
 }
 
 h1 {
@@ -37,71 +38,86 @@ h1 {
 }
 
 .video-container {
-    margin: 20px 0;
-    height: 400px;
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    width: 400px;
+    max-width: 90vw;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: black;
 }
 
 .video-container video {
-    height: 100%;
     width: 100%;
-    border-radius: 10px;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+    display: block;
 }
 
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
+.controls {
+    width: 100%;
+    background: #222;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border-radius: 0 0 10px 10px;
 }
 
-.play-button.hidden {
-    opacity: 0;
-    pointer-events: none;
+.control-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 8px;
+    user-select: none;
+}
+
+#progressBar {
+    flex-grow: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: #555;
+    outline: none;
+}
+
+#progressBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    margin-top: -4px;
+}
+
+#progressBar::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
 }
 
 h2 {
     margin-top: 20px;
     font-size: 20px;
     text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Calendly embed wrapper and iframe styling for vertical 9:16 aspect ratio */
-.calendly-iframe-wrapper {
-    width: 300px;
     max-width: 90vw;
+}
+
+.calendly-inline-widget {
+    max-width: 400px;
+    width: 90vw;
+    height: 500px;
     margin: 0 auto 40px auto;
-}
-
-.calendly-iframe-wrapper iframe {
-    width: 100%;
-    height: 533px; /* 9:16 aspect ratio */
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 480px) {
-    .calendly-iframe-wrapper {
-        width: 90vw;
-    }
-    .calendly-iframe-wrapper iframe {
-        height: calc(90vw * 16 / 9);
-    }
 }
