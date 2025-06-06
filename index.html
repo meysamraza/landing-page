@@ -22,11 +22,14 @@
 
     <h2>Book a 15-minute strategy call with Dr. Obaid</h2>
 
-    <!-- Calendly widget container only, no iframe inside -->
-    <div class="calendly-inline-widget" data-url="https://calendly.com/arazameysam/30min"></div>
-
-    <!-- Calendly widget script -->
-      <!--  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>-->
+    <div class="calendly-iframe-wrapper">
+        <iframe 
+            src="https://calendly.com/arazameysam/30min?embed_domain=&embed_type=Inline" 
+            frameborder="0" 
+            title="Select a Date & Time - Calendly" 
+            scrolling="no">
+        </iframe>
+    </div>
 
     <script>
         const video = document.getElementById("myVideo");
