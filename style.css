@@ -1,123 +1,150 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background: #fff;
-    color: #222;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #222;
+  margin: 0;
 }
 
 h1 {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .subheading {
-    font-size: 16px;
-    text-align: center;
-    color: #3a3a3a;
-    margin-bottom: 15px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  font-size: 16px;
+  text-align: center;
+  color: #3a3a3a;
+  margin-bottom: 15px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .features {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-    text-align: center;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .features li {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
+/* Keep the exact video container size and orientation as before */
 .video-container {
-    position: relative;
-    width: 400px;
-    max-width: 90vw;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-    border-radius: 10px;
-    overflow: hidden;
-    background: black;
+  position: relative;
+  width: 400px;
+  max-width: 90vw;
+  height: 400px;
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .video-container video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
+/* Controls overlaid inside the video at bottom */
 .controls {
-    width: 100%;
-    background: #222;
-    display: flex;
-    align-items: center;
-    padding: 8px 10px;
-    box-sizing: border-box;
-    border-radius: 0 0 10px 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border-radius: 0 0 10px 10px;
+  gap: 10px;
+  user-select: none;
 }
 
+/* Buttons styling */
 .control-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 8px;
-    user-select: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Progress bar takes the rest */
 #progressBar {
-    flex-grow: 1;
-    cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 6px;
-    border-radius: 3px;
-    background: #555;
-    outline: none;
+  flex-grow: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #555;
+  outline: none;
 }
 
 #progressBar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: white;
-    cursor: pointer;
-    margin-top: -4px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  margin-top: -4px;
 }
 
 #progressBar::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: white;
-    cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
 }
 
 h2 {
-    margin-top: 20px;
-    font-size: 20px;
-    text-align: center;
-    max-width: 90vw;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  max-width: 90vw;
 }
 
 .calendly-inline-widget {
-    max-width: 400px;
-    width: 90vw;
-    height: 500px;
-    margin: 0 auto 40px auto;
+  max-width: 400px;
+  width: 90vw;
+  height: 500px;
+  margin: 0 auto 40px auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .video-container {
+    height: 280px;
+  }
+
+  .control-btn {
+    font-size: 18px;
+    width: 28px;
+    height: 28px;
+  }
 }
