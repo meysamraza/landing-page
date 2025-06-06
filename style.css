@@ -37,12 +37,12 @@ h1 {
   margin: 5px 0;
 }
 
-/* Keep the exact video container size and orientation as before */
+/* Video container - KEEP exact original size and orientation */
 .video-container {
   position: relative;
-  width: 400px;
+  width: 640px;
   max-width: 90vw;
-  height: 400px;
+  height: 360px;
   background: black;
   border-radius: 10px;
   overflow: hidden;
@@ -58,7 +58,7 @@ h1 {
   display: block;
 }
 
-/* Controls overlaid inside the video at bottom */
+/* Controls overlaid inside the video container at bottom */
 .controls {
   position: absolute;
   bottom: 0;
@@ -139,7 +139,8 @@ h2 {
 /* Responsive adjustments */
 @media (max-width: 480px) {
   .video-container {
-    height: 280px;
+    height: 200px;
+    width: 100vw;
   }
 
   .control-btn {
