@@ -1,10 +1,3 @@
-/* Reset default margins and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -13,7 +6,6 @@ body {
     font-family: Arial, sans-serif;
     background: #fff;
     color: #222;
-    min-height: 100vh;
 }
 
 h1 {
@@ -21,7 +13,6 @@ h1 {
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    max-width: 600px;
 }
 
 .subheading {
@@ -30,6 +21,8 @@ h1 {
     color: #3a3a3a;
     margin-bottom: 15px;
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .features {
@@ -37,7 +30,6 @@ h1 {
     padding: 0;
     margin-bottom: 20px;
     text-align: center;
-    max-width: 600px;
 }
 
 .features li {
@@ -48,7 +40,6 @@ h1 {
     margin: 20px 0;
     height: 400px;
     width: 400px;
-    max-width: 90vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +50,6 @@ h1 {
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    cursor: pointer;
 }
 
 .play-button {
@@ -89,45 +79,29 @@ h2 {
     margin-top: 20px;
     font-size: 20px;
     text-align: center;
-    max-width: 600px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
+/* Calendly embed wrapper and iframe styling for vertical 9:16 aspect ratio */
 .calendly-iframe-wrapper {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 40px;
+    width: 300px;
+    max-width: 90vw;
+    margin: 0 auto 40px auto;
 }
 
 .calendly-iframe-wrapper iframe {
     width: 100%;
-    height: 500px;
+    height: 533px; /* 9:16 aspect ratio */
     border: none;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-    .subheading {
-        font-size: 14px;
-        max-width: 90%;
-    }
-    .features {
-        max-width: 90%;
-    }
-    .video-container {
-        height: 250px;
-        width: 100%;
-    }
-    h2 {
-        font-size: 18px;
-        padding: 0 10px;
-        max-width: 90%;
+    .calendly-iframe-wrapper {
+        width: 90vw;
     }
     .calendly-iframe-wrapper iframe {
-        height: 400px;
+        height: calc(90vw * 16 / 9);
     }
 }
