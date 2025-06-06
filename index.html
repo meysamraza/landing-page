@@ -1,104 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="style.css" />
-    <title>Landing Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Where Hospitals and Physicians Finally Align</h1>
-    <p class="subheading">A smarter way to end physician burnout and stop revenue loss — without overpaying recruiters.</p>
-    <ul class="features">
-        <li>✅ Cut credentialing delays by 50%</li>
-        <li>💲 Transparent pricing — no hidden fees</li>
-        <li>🧑‍⚕️ Handpicked physicians, faster than traditional agencies</li>
-    </ul>
+  <h1>Where Hospitals and Physicians Finally Align</h1>
+  <p class="subheading">
+    A smarter way to end physician burnout and stop revenue loss — without
+    overpaying recruiters.
+  </p>
+  <ul class="features">
+    <li>✅ Cut credentialing delays by 50%</li>
+    <li>💲 Transparent pricing — no hidden fees</li>
+    <li>🧑‍⚕️ Handpicked physicians, faster than traditional agencies</li>
+  </ul>
 
-    <div class="video-container">
-        <video id="myVideo" src="No text.mp4"></video>
-        <div class="controls">
-            <button id="playPauseBtn" class="control-btn">&#9658;</button>
-            <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1" />
-            <button id="muteBtn" class="control-btn">&#128263;</button>
-            <button id="fullscreenBtn" class="control-btn" title="Fullscreen">&#x26F6;</button>
-        </div>
+  <div class="video-container">
+    <video id="myVideo" src="No text.mp4" preload="metadata"></video>
+
+    <div class="controls">
+      <button id="playPauseBtn" class="control-btn" aria-label="Play/Pause">&#9658;</button>
+      <input
+        type="range"
+        id="progressBar"
+        value="0"
+        min="0"
+        max="100"
+        step="0.1"
+        aria-label="Video progress"
+      />
+      <button id="muteBtn" class="control-btn" aria-label="Mute/Unmute">&#128263;</button>
+      <button id="fullscreenBtn" class="control-btn" aria-label="Fullscreen">&#x26F6;</button>
     </div>
+  </div>
 
-    <h2>Book a 15-minute strategy call with Dr. Obaid</h2>
-    <div class="calendly-inline-widget" 
-         data-url="https://calendly.com/arazameysam/30min" 
-         style="position: relative; min-width:320px; height:500px;">
-        <iframe src="https://calendly.com/arazameysam/30min?embed_domain=&embed_type=Inline" 
-                width="100%" height="100%" frameborder="0" 
-                title="Select a Date & Time - Calendly"></iframe>
-    </div>
+  <h2>Book a 15-minute strategy call with Dr. Obaid</h2>
+  <div
+    class="calendly-inline-widget"
+    data-url="https://calendly.com/arazameysam/30min"
+    style="position: relative; min-width: 320px; height: 500px"
+  >
+    <iframe
+      src="https://calendly.com/arazameysam/30min?embed_domain=&embed_type=Inline"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      title="Select a Date & Time - Calendly"
+    ></iframe>
+  </div>
 
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script
+    type="text/javascript"
+    src="https://assets.calendly.com/assets/external/widget.js"
+    async
+  ></script>
 
-    <script>
-        const video = document.getElementById("myVideo");
-        const playPauseBtn = document.getElementById("playPauseBtn");
-        const muteBtn = document.getElementById("muteBtn");
-        const progressBar = document.getElementById("progressBar");
-        const fullscreenBtn = document.getElementById("fullscreenBtn");
-        const videoContainer = document.querySelector(".video-container");
+  <script>
+    const video = document.getElementById("myVideo");
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const muteBtn = document.getElementById("muteBtn");
+    const progressBar = document.getElementById("progressBar");
+    const fullscreenBtn = document.getElementById("fullscreenBtn");
+    const videoContainer = document.querySelector(".video-container");
 
-        // Play/pause toggle
-        playPauseBtn.addEventListener("click", () => {
-            if (video.paused) {
-                video.play();
-                playPauseBtn.innerHTML = "&#10074;&#10074;"; // pause icon
-            } else {
-                video.pause();
-                playPauseBtn.innerHTML = "&#9658;"; // play icon
-            }
-        });
+    // Play/pause toggle
+    playPauseBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.innerHTML = "&#10074;&#10074;"; // pause icon
+      } else {
+        video.pause();
+        playPauseBtn.innerHTML = "&#9658;"; // play icon
+      }
+    });
 
-        // Mute/unmute toggle
-        muteBtn.addEventListener("click", () => {
-            video.muted = !video.muted;
-            muteBtn.innerHTML = video.muted ? "&#128263;" : "&#128266;"; // speaker off/on icons
-        });
+    // Mute/unmute toggle
+    muteBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      muteBtn.innerHTML = video.muted ? "&#128263;" : "&#128266;"; // speaker off/on icons
+    });
 
-        // Update progress bar as video plays
-        video.addEventListener("timeupdate", () => {
-            if (!progressBar.max || progressBar.max === "100") {
-                progressBar.max = video.duration;
-            }
-            progressBar.value = video.currentTime;
-        });
+    // Update progress bar as video plays
+    video.addEventListener("timeupdate", () => {
+      if (!progressBar.max || progressBar.max === "100") {
+        progressBar.max = video.duration;
+      }
+      progressBar.value = video.currentTime;
+    });
 
-        // Seek video when progress bar is changed
-        progressBar.addEventListener("input", () => {
-            video.currentTime = progressBar.value;
-        });
+    // Seek video when progress bar is changed
+    progressBar.addEventListener("input", () => {
+      video.currentTime = progressBar.value;
+    });
 
-        // Reset play button on video end
-        video.addEventListener("ended", () => {
-            playPauseBtn.innerHTML = "&#9658;";
-        });
+    // Reset play button on video end
+    video.addEventListener("ended", () => {
+      playPauseBtn.innerHTML = "&#9658;";
+    });
 
-        // Fullscreen toggle
-        fullscreenBtn.addEventListener("click", () => {
-            if (!document.fullscreenElement) {
-                if (videoContainer.requestFullscreen) {
-                    videoContainer.requestFullscreen();
-                } else if (videoContainer.webkitRequestFullscreen) { /* Safari */
-                    videoContainer.webkitRequestFullscreen();
-                } else if (videoContainer.msRequestFullscreen) { /* IE11 */
-                    videoContainer.msRequestFullscreen();
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { /* Safari */
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { /* IE11 */
-                    document.msExitFullscreen();
-                }
-            }
-        });
-    </script>
+    // Fullscreen toggle
+    fullscreenBtn.addEventListener("click", () => {
+      if (!document.fullscreenElement) {
+        if (videoContainer.requestFullscreen) {
+          videoContainer.requestFullscreen();
+        } else if (videoContainer.webkitRequestFullscreen) {
+          /* Safari */
+          videoContainer.webkitRequestFullscreen();
+        } else if (videoContainer.msRequestFullscreen) {
+          /* IE11 */
+          videoContainer.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          /* IE11 */
+          document.msExitFullscreen();
+        }
+      }
+    });
+  </script>
 </body>
 </html>
