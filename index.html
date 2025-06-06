@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="style.css" />
     <title>Landing Page</title>
 </head>
@@ -17,43 +17,63 @@
 
     <div class="video-container">
         <video id="myVideo" src="No text.mp4"></video>
-        <div id="playButton" class="play-button">&#9658;</div>
+        <div class="controls">
+            <button id="playPauseBtn" class="control-btn">&#9658;</button>
+            <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1" />
+            <button id="muteBtn" class="control-btn">&#128263;</button>
+        </div>
     </div>
 
     <h2>Book a 15-minute strategy call with Dr. Obaid</h2>
-    <div class="calendly-iframe-wrapper">
+    <div class="calendly-inline-widget" 
+         data-url="https://calendly.com/arazameysam/30min" 
+         style="position: relative; min-width:320px; height:500px;">
         <iframe src="https://calendly.com/arazameysam/30min?embed_domain=&embed_type=Inline" 
-                width="100%" height="500" frameborder="0" 
+                width="100%" height="100%" frameborder="0" 
                 title="Select a Date & Time - Calendly"></iframe>
     </div>
 
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
     <script>
         const video = document.getElementById("myVideo");
-        const playButton = document.getElementById("playButton");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const muteBtn = document.getElementById("muteBtn");
+        const progressBar = document.getElementById("progressBar");
 
-        playButton.addEventListener("click", () => {
+        // Play/pause toggle
+        playPauseBtn.addEventListener("click", () => {
             if (video.paused) {
                 video.play();
-                playButton.classList.add("hidden");
+                playPauseBtn.innerHTML = "&#10074;&#10074;"; // pause icon
             } else {
                 video.pause();
-                playButton.classList.remove("hidden");
+                playPauseBtn.innerHTML = "&#9658;"; // play icon
             }
         });
 
-        video.addEventListener("click", () => {
-            if (video.paused) {
-                video.play();
-                playButton.classList.add("hidden");
-            } else {
-                video.pause();
-                playButton.classList.remove("hidden");
-            }
+        // Mute/unmute toggle
+        muteBtn.addEventListener("click", () => {
+            video.muted = !video.muted;
+            muteBtn.innerHTML = video.muted ? "&#128263;" : "&#128266;"; // speaker off/on icons
         });
 
+        // Update progress bar as video plays
+        video.addEventListener("timeupdate", () => {
+            if (!progressBar.max || progressBar.max === "100") {
+                progressBar.max = video.duration;
+            }
+            progressBar.value = video.currentTime;
+        });
+
+        // Seek video when progress bar is changed
+        progressBar.addEventListener("input", () => {
+            video.currentTime = progressBar.value;
+        });
+
+        // Reset play button on video end
         video.addEventListener("ended", () => {
-            playButton.classList.remove("hidden");
+            playPauseBtn.innerHTML = "&#9658;";
         });
     </script>
 </body>
